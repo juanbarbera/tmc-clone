@@ -1,24 +1,41 @@
-import logo from './logo.svg';
+import { SplitScreen } from './components/SplitScreen';
+import { SideNav } from './components/SideNav';
+import { Main } from './components/Main';
 import './App.css';
+
+const clients = [
+  {
+    name: 'Groupe Post Luxembourg',
+    employees: 4540
+  },
+  {
+    name: 'Groupe CFL',
+    employees: 4360
+  },
+  {
+    name: 'Groupe Cactus',
+    employees: 4320
+  },
+  {
+    name: 'Groupe Dussmann Luxembourg',
+    employees: 4060
+  },
+  {
+    name: 'BGL BNP Paribas',
+    employees: 3900
+  },
+  {
+    name: 'Groupe ArcelorMittal',
+    employees: 3810
+  }
+]
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SplitScreen leftWeight={1} rightWeight={4}>
+      <SideNav />
+      <Main clients={clients}/>
+    </SplitScreen>
   );
 }
 
