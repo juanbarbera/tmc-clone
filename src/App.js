@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { SplitScreen } from './components/SplitScreen';
 import { SideNav } from './components/SideNav';
 import { Main } from './components/Main';
 import './App.css';
+import { useEffect } from 'react';
 
 const clients = [
   {
@@ -31,9 +33,25 @@ const clients = [
 ]
 
 function App() {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const viewPortWidth = window.innerWidth;
+    
+    if (viewPortWidth <= 1350) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+
+    window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth <= 1350 ? true : false);
+    })
+  }, [])
+
   return (
     <SplitScreen leftWeight={1} rightWeight={4}>
-      <SideNav />
+      {isMobile ? '' : <SideNav />}
       <Main clients={clients}/>
     </SplitScreen>
   );

@@ -20,6 +20,9 @@ const ModalBody = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 1250px) {
+    width: 90%;
+  }
 `;
 
 const Button = styled.button`
@@ -30,6 +33,7 @@ const Button = styled.button`
   border-radius: 5px;
   font-weight: 500;
   font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
 `;
 
 export const Modal = ({ children }) => {
@@ -37,7 +41,7 @@ export const Modal = ({ children }) => {
   
   return (
     <>
-      <Button onClick={() => setShouldShow(true)}>CLICK FOR SURPRISE</Button>
+      <Button onClick={() => setShouldShow(true)}>Open Modal</Button>
       {shouldShow && (
         <ModalBackground onClick={() => setShouldShow(false)}>
           <ModalBody onClick={e => e.stopPropagation()}>

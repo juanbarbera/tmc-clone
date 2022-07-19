@@ -1,10 +1,28 @@
 import styled from 'styled-components';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Background = styled.div`
   height: 100vh;
   background-color: rgb(0,50,71);
   position: fixed;
   width: 20%;
+  @media (max-width: 1350px) {
+    width: auto;
+  }
+`;
+
+const CustomCloseIcon = styled(CloseIcon)`
+  && {
+    position: absolute;
+    width: 8vh;
+    height: 8vh;
+    color: white;
+    right: 1vw;
+    top: 2vw;
+    @media (min-width: 1350px) {
+      display: none;
+    }
+  }
 `;
 
 const Container = styled.div`
@@ -17,6 +35,11 @@ const Logo = styled.img`
   margin-bottom: 9vh;
   padding-left: 15%;
   cursor: pointer;
+  @media (max-width: 1350px) {
+      margin: 14vh 10vw 5vh 20px;
+      width: 270px;
+      padding-left: 0;
+  }
 `;
 
 const Areas = styled.div`
@@ -42,9 +65,10 @@ const Areas = styled.div`
     }
 `;
 
-export const SideNav = () => {
+export const SideNav = ({ toggleDrawer }) => {
   return (
     <Background>
+      <CustomCloseIcon onClick={toggleDrawer ? toggleDrawer(false) : null}/>
       <Container>
         <Logo src="./imgs/TMC.png" />
         <Areas>HOME</Areas>

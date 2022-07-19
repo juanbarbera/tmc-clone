@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
+  @media (max-width: 1350px) {
+    display: block;
+  }
 `;
 
 const Pane = styled.div`
