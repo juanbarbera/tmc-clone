@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import CloseIcon from '@mui/icons-material/Close';
 
+import tmc from '../assets/images/TMC.png';
+
 const Background = styled.div`
   height: 100vh;
   background-color: rgb(0,50,71);
@@ -70,7 +72,7 @@ export const SideNav = ({ toggleDrawer }) => {
     <Background>
       <CustomCloseIcon onClick={toggleDrawer ? toggleDrawer(false) : null}/>
       <Container>
-        <Logo src="./imgs/TMC.png" />
+        <Logo src={tmc} />
         <Areas>HOME</Areas>
         <Areas>EMPLOYENEURSHIP</Areas>
         <Areas>WORK WITH US</Areas>

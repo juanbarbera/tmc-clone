@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
+
 import { RegularList } from './RegularList';
 import { ClientListItem } from './ClientListItem'; 
 import { Modal } from './Modal'; 
-import styled from 'styled-components';
+import { SideNav } from './SideNav';
 
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { SideNav } from './SideNav';
+import kateSade from '../assets/images/kate-sade.jpg';
+import paulFiedler from '../assets/images/paul-fiedler.jpg';
+import paulFiedlerPlcHolder from '../assets/images/paul-fiedler-placeholder.webp';
+import kateSadePlcHolder from '../assets/images/kate-sade-placeholder.webp';
 
 const Background = styled.div`
   background-color: white;
@@ -31,8 +36,12 @@ const DrawerHamb = styled(MenuIcon)`
   }
 `;
 
+// receive image (imported) as prop. The image itself with have the logic.
+// it will require: 
+// onload event handler, small sized image
+
 const Home = styled.div`
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('./imgs/paul-fiedler.jpg');
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(${props => props.backgroundImg});
   background-size: cover;
   width: 100%;
   height: 70vh;
@@ -67,7 +76,7 @@ const Know = styled.p`
   }
 `;
 
-const Head = styled.h3`
+const Head = styled.p`
   margin-top: 5vh;
   padding-left: 3.7%;
   color: rgb(0,50,71);
@@ -81,7 +90,7 @@ const Head = styled.h3`
   }
 `;
 
-const Parag = styled.p`
+const Parag = styled.div`
   margin: 3vh 0;
   padding: 0 3.7%;
   color: rgb(0,50,71);
@@ -89,7 +98,7 @@ const Parag = styled.p`
 `;
 
 const Foot = styled.div`
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('./imgs/kate-sade.jpg');
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(${props => props.backgroundImg});
   background-size: cover;
   background-position: 10% 55%;
   width: 100%;
@@ -112,6 +121,18 @@ const Example = () => {
   )
 }
 
+const useProgressiveImage = src => {  
+  const [sourceLoaded, setSourceLoaded] = useState(null)
+
+  useEffect(() => {
+    const img = new Image()
+    img.src = src
+    img.onload = () => setSourceLoaded(src)
+  }, [src])
+
+  return sourceLoaded 
+}
+
 export const Main = ({ clients }) => {
   const [openNavBar, setOpenNavBar] = useState(false);
 
@@ -119,7 +140,8 @@ export const Main = ({ clients }) => {
     setOpenNavBar(booleanValue);
   };
 
-  // como o layout está funcionando?
+  const loadedPaul = useProgressiveImage(paulFiedler)
+  const loadedKate = useProgressiveImage(kateSade)
 
   return (
     <>
@@ -134,7 +156,7 @@ export const Main = ({ clients }) => {
 
 
     <Background>
-      <Home>
+      <Home backgroundImg={loadedPaul || paulFiedlerPlcHolder}>
         <Know>
           KNOW WHERE YOU'RE HEADED
         </Know>        
@@ -161,7 +183,7 @@ export const Main = ({ clients }) => {
           resourceName="client"
           itemComponent={ClientListItem} />
       </Parag>      
-      <Foot>
+      <Foot backgroundImg={loadedKate || kateSadePlcHolder}>
         <Know>Grow with us</Know>
       </Foot>
       <div style={{display: 'flex', justifyContent: 'center', marginTop: '40px'}}>

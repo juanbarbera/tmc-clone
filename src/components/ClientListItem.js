@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Client = styled.h3`
+const Client = styled.p`
   font-size: 18px;
 `;
 
