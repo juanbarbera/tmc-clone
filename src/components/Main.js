@@ -13,6 +13,7 @@ import kateSade from '../assets/images/kate-sade.jpg';
 import paulFiedler from '../assets/images/paul-fiedler.jpg';
 import paulFiedlerPlcHolder from '../assets/images/paul-fiedler-placeholder.webp';
 import kateSadePlcHolder from '../assets/images/kate-sade-placeholder.webp';
+import tmc from '../assets/images/TMC.png';
 
 const Background = styled.div`
   background-color: white;
@@ -145,19 +146,21 @@ export const Main = ({ clients }) => {
   const loadedPaul = useProgressiveImage(paulFiedler)
   const loadedKate = useProgressiveImage(kateSade)
 
+  useEffect(() => {
+    console.log(tmc)
+  },[])
+
   return (
-    <>
-    <DrawerHamb onClick={toggleDrawer(!openNavBar)}/>
-    <Drawer
-      anchor='left'
-      open={openNavBar}
-      onClose={toggleDrawer(!openNavBar)}
-    >
-      <SideNav toggleDrawer={toggleDrawer} openNavBar={openNavBar}/>      
-    </Drawer>
-
-
     <Background>
+      <DrawerHamb onClick={toggleDrawer(!openNavBar)}/>
+      <Drawer
+        anchor='left'
+        open={openNavBar}
+        onClose={toggleDrawer(!openNavBar)}
+      >
+        <SideNav toggleDrawer={toggleDrawer} openNavBar={openNavBar}/>      
+      </Drawer>
+
       <Home backgroundImg={loadedPaul || paulFiedlerPlcHolder}>
         <Know>
           KNOW WHERE YOU'RE HEADED
@@ -206,6 +209,5 @@ export const Main = ({ clients }) => {
         Speaking of investment: Employeneurship offers both a stable salary and rewards for entrepreneurship. We are transparent about your project’s costs and turnover and will share the profits with you. Your TMC contract is tailor-made and takes your personal wishes and preferences into account. And to offer even more freedom of choice: in our Benefit Shop, you'll find extra flexibility (and fiscal advantages) regarding your fee.
       </Parag>
     </Background>
-    </>
   )
 }

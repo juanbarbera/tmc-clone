@@ -3,7 +3,8 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import tmc from '../assets/images/TMC.png';
 
-const Background = styled.div`
+const Background2 = styled.div` 
+  z-index: 2;
   height: 100vh;
   background-color: rgb(0,50,71);
   position: fixed;
@@ -70,7 +71,7 @@ const Areas = styled.div`
 
 export const SideNav = ({ toggleDrawer, openNavBar }) => {
   return (
-    <Background>
+    <Background2>
       <CustomCloseIcon onClick={toggleDrawer ? toggleDrawer(!openNavBar) : null}/>
       <Container>
         <Logo src={tmc} />
@@ -83,6 +84,6 @@ export const SideNav = ({ toggleDrawer, openNavBar }) => {
         <Areas>NEWS & ARTICLES</Areas>
         <Areas>ABOUT TMC</Areas>
       </Container>
-    </Background>
+    </Background2>
   );
 };
