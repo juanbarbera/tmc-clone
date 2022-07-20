@@ -7,9 +7,10 @@ const Background = styled.div`
   height: 100vh;
   background-color: rgb(0,50,71);
   position: fixed;
-  width: 20%;
+  width: 20vw;
   @media (max-width: 1350px) {
     width: auto;
+    position: auto;
   }
 `;
 
@@ -67,10 +68,10 @@ const Areas = styled.div`
     }
 `;
 
-export const SideNav = ({ toggleDrawer }) => {
+export const SideNav = ({ toggleDrawer, openNavBar }) => {
   return (
     <Background>
-      <CustomCloseIcon onClick={toggleDrawer ? toggleDrawer(false) : null}/>
+      <CustomCloseIcon onClick={toggleDrawer ? toggleDrawer(!openNavBar) : null}/>
       <Container>
         <Logo src={tmc} />
         <Areas>HOME</Areas>

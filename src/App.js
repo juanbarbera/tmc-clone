@@ -51,7 +51,7 @@ function App() {
 
   return (
     <SplitScreen leftWeight={1} rightWeight={4}>
-      {isMobile ? '' : <SideNav />}
+      {isMobile ? null : <SideNav />}
       <Main clients={clients}/>
     </SplitScreen>
   );

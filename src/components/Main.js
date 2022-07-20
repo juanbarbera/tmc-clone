@@ -108,6 +108,8 @@ const Foot = styled.div`
   align-items: center;  
 `;
 
+
+
 const ExampleText = styled.p`
   color: black;
   margin: 10px 0 30px;
@@ -149,9 +151,9 @@ export const Main = ({ clients }) => {
     <Drawer
       anchor='left'
       open={openNavBar}
-      onClose={toggleDrawer(false)}
+      onClose={toggleDrawer(!openNavBar)}
     >
-     <SideNav toggleDrawer={toggleDrawer}/>
+      <SideNav toggleDrawer={toggleDrawer} openNavBar={openNavBar}/>      
     </Drawer>
 
 
