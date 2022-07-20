@@ -9,11 +9,10 @@ import { SideNav } from './SideNav';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import kateSade from '../assets/images/kate-sade.jpg';
-import paulFiedler from '../assets/images/paul-fiedler.jpg';
+import kateSade from '../assets/images/kate-sade.webp';
+import paulFiedler from '../assets/images/paul-fiedler.webp';
 import paulFiedlerPlcHolder from '../assets/images/paul-fiedler-placeholder.webp';
 import kateSadePlcHolder from '../assets/images/kate-sade-placeholder.webp';
-import tmc from '../assets/images/TMC.png';
 
 const Background = styled.div`
   background-color: white;
@@ -146,17 +145,15 @@ export const Main = ({ clients }) => {
   const loadedPaul = useProgressiveImage(paulFiedler)
   const loadedKate = useProgressiveImage(kateSade)
 
-  useEffect(() => {
-    console.log(tmc)
-  },[])
-
   return (
     <Background>
       <DrawerHamb onClick={toggleDrawer(!openNavBar)}/>
       <Drawer
         anchor='left'
         open={openNavBar}
-        onClose={toggleDrawer(!openNavBar)}
+        transitionDuration={100}
+        variant="persistent"
+        elevation={64}
       >
         <SideNav toggleDrawer={toggleDrawer} openNavBar={openNavBar}/>      
       </Drawer>
